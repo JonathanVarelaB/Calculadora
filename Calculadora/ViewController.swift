@@ -1,10 +1,7 @@
-//
 //  ViewController.swift
 //  Calculadora
-//
 //  Created by Jonathan Varela on 4/14/18.
 //  Copyright © 2018 Jonathan Varela. All rights reserved.
-//
 
 import UIKit
 
@@ -66,10 +63,12 @@ class ViewController: UIViewController {
     
     @IBAction func Calcular(_ sender: UIButton) {
         var resultadoFinal: String = self.Operacion.text!
-        resultadoFinal = resultadoFinal.replacingOccurrences(of: "x", with: "*").replacingOccurrences(of: "÷", with: "/")
-        let exp: NSExpression = NSExpression(format: resultadoFinal)
-        let result: Double = exp.expressionValue(with: nil, context: nil) as! Double
-        self.Resultado.text = String(result)
+        if resultadoFinal != "" {
+            resultadoFinal = resultadoFinal.replacingOccurrences(of: "x", with: "*").replacingOccurrences(of: "÷", with: "/")
+            let exp: NSExpression = NSExpression(format: resultadoFinal)
+            let result: Double = exp.expressionValue(with: nil, context: nil) as! Double
+            self.Resultado.text = String(result)
+        }
     }
     
 }
